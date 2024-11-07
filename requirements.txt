@@ -1,0 +1,6 @@
+Flask
+kubernetes
+google-auth
+google-api-python-client
+pytz
+prometheus-flask-exporter

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "self-heal.fullname" . }}-test-connection"
+  labels:
+    {{- include "self-heal.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "self-heal.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
